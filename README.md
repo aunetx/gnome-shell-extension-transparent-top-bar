@@ -4,6 +4,12 @@ A GNOME Shell extension that brings back the transparent top bar when free-float
 
 Based on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar](work), but this time with transparency set to 100%. (by the way, thanks to him!)
 
+## Screenshots
+
+![screenshot free-floating](screenshot_free-floating.png)
+
+![screenshot fullscreen](screenshot_fullscreen.png)
+
 Enjoy!
 
 ## License
