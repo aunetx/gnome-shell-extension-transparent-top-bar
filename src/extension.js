@@ -85,9 +85,9 @@ var Extension = class Extension {
         const activeWorkspace = workspaceManager.get_active_workspace();
         const windows = activeWorkspace.list_windows().filter(metaWindow => {
             return metaWindow.is_on_primary_monitor()
-                    && metaWindow.showing_on_its_workspace()
-                    && !metaWindow.is_hidden()
-                    && metaWindow.get_window_type() !== Meta.WindowType.DESKTOP;
+                && metaWindow.showing_on_its_workspace()
+                && !metaWindow.is_hidden()
+                && metaWindow.get_window_type() !== Meta.WindowType.DESKTOP;
         });
 
         // Check if at least one window is near enough to the panel.

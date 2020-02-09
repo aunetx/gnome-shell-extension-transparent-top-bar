@@ -1,8 +1,10 @@
-# GNOME Shell Extension - Transparent Top Bar
+# GNOME Shell Extension - Fully Transparent Top Bar
 
-A GNOME Shell extension that brings back the transparent top bar when free-floating in GNOME Shell 3.32.
+A GNOME Shell extension that brings back the transparent top bar when free-floating in GNOME Shell.
 
-This basically comes from the feature implementation [removed in GNOME Shell 3.32](https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/376/), and I modified the code a bit to make it an extension. Enjoy!
+Based on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar](work), but this time with transparency set to 100%. (by the way, thanks to him!)
+
+Enjoy!
 
 ## License
 
