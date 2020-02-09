@@ -6,7 +6,13 @@ Based on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent
 
 ## Screenshots
 
+![screenshot](screenshot.png)
+
+With a non-maximized window :
+
 ![screenshot free-floating](screenshot_free-floating.png)
+
+With a maximized one :
 
 ![screenshot fullscreen](screenshot_fullscreen.png)
 
