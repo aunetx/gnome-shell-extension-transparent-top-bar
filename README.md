@@ -8,15 +8,21 @@ Based on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent
 
 ![screenshot](screenshot.png)
 
-With a non-maximized window :
+With a non-maximized window:
 
 ![screenshot free-floating](screenshot_free-floating.png)
 
-With a maximized one :
+With a maximized one:
 
 ![screenshot fullscreen](screenshot_fullscreen.png)
 
-Enjoy!
+## Versions
+
+Supported GNOME Shell versions:
+
+- 3.32
+- 3.34
+- 3.36
 
 ## License
 
