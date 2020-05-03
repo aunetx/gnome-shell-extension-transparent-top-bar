@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
   <schema id="org.gnome.shell.extensions.fully-transparent-top-bar" path="/org/gnome/shell/extensions/fully-transparent-top-bar/">
-    <key type="d" name="active-opacity">
-		<default>1.0</default>
-		<summary>Opacity when topbar is touched by any window</summary>
-		<description/>
-	</key>
-    <key type="d" name="inactive-opacity">
-		<default>0.0</default>
-		<summary>Opacity when topbar is not touched by any window</summary>
-		<description/>
-	</key>
     <key type="s" name="active-color">
-		<default>"#000000"</default>
-		<summary>Color when topbar is touched by any window</summary>
+		<default>"#000000ff"</default>
+		<summary>RGBA color when topbar is touched by a window</summary>
+		<description/>
+	</key>
+	<key type="d" name="active-opacity">
+		<default>1.0</default>
+		<summary>Opacity when topbar is touched by a window</summary>
 		<description/>
 	</key>
     <key type="s" name="inactive-color">
-		<default>"#000000"</default>
-		<summary>Color when topbar is not touched by any window</summary>
-		<description/>
-	</key>
-    <key type="s" name="active-blended">
-		<default>"#000000ff"</default>
-		<summary>Final color when topbar is not touched by any window</summary>
-		<description/>
-	</key>
-    <key type="s" name="inactive-blended">
 		<default>"#00000000"</default>
-		<summary>Final color when topbar is not touched by any window</summary>
+		<summary>RGBA color when topbar is not touched by any window</summary>
+		<description/>
+	</key>
+	<key type="d" name="inactive-opacity">
+		<default>0.0</default>
+		<summary>Opacity when topbar is not touched by any window</summary>
 		<description/>
 	</key>
   </schema>

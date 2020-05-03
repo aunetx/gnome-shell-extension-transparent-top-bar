@@ -2,7 +2,13 @@
 
 A GNOME Shell extension that brings back the transparent top bar when free-floating in GNOME Shell.
 
-Based on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar](work), but this time with transparency set to 100%. (by the way, thanks to him!)
+This extension now supports changing opacity and color of topbar, and will maybe support soon changing at least:
+
+- colors transition duration
+- topbar text color
+- topbar text shadow
+
+Originally ased on zhanghai [https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar](work); by the way, thanks to him!
 
 ## Screenshots
 

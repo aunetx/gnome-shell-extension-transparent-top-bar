@@ -1,16 +1,40 @@
 const Meta = imports.gi.Meta;
 const St = imports.gi.St;
 const Main = imports.ui.main;
+const Clutter = imports.gi.Clutter;
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const CurrentExtension = ExtensionUtils.getCurrentExtension();
+const CurrentExtension = imports.misc.extensionUtils.getCurrentExtension();
 const Settings = CurrentExtension.imports.settings;
+
+class TopbarColor {
+    constructor() {
+        this.color = new Clutter.Color;
+    }
+
+    update(color, opacity) {
+        var extracted_color = Clutter.Color.from_string(color);
+        var color = new Clutter.Color();
+        if (extracted_color[0] == true) {
+            color = extracted_color[1];
+        } else {
+            global.log(`[smart transparent topbar] could not extract color from ${color}`);
+        }
+        color.alpha = opacity * 255;
+
+        this.color = color;
+    }
+}
 
 var Extension = class Extension {
     constructor() {
         this._actorSignalIds = null;
         this._windowSignalIds = null;
         this._prefs = new Settings.Prefs();
+        this._topbar_prefs = {
+            active: new TopbarColor(),
+            inactive: new TopbarColor()
+        }
+        this._test = "TEST"
     }
 
     // Called when extension is enabled
@@ -40,6 +64,7 @@ var Extension = class Extension {
             global.window_manager.connect('switch-workspace', this._updateTransparent.bind(this))
         ]);
 
+        this._update_prefs();
         this._updateTransparent();
     }
 
@@ -114,12 +139,27 @@ var Extension = class Extension {
     // Called when the topbar needs to update its opacity
     _setTransparent(transparent) {
         if (transparent) {
-            //! topbar has inactive-opacity
-            Main.panel.background_color = this._prefs.INACTIVE_BLENDED.get();
+            //! topbar has inactive-color
+            Main.panel.background_color = this._topbar_prefs["inactive"].color;
         } else {
-            //! topbar has active-opacity
-            Main.panel.background_color = this._prefs.ACTIVE_BLENDED.get();
+            //! topbar has active-color
+            Main.panel.background_color = this._topbar_prefs["active"].color;
         }
+    }
+
+    // Called on enable or settings change, updates this._topbar_prefs
+    _update_prefs() {
+        // compute active topbar prefs
+        var active_color = this._prefs.ACTIVE_COLOR.get();
+        var active_opacity = this._prefs.ACTIVE_OPACITY.get();
+        this._topbar_prefs["active"].update(active_color, active_opacity);
+
+        // compute inactive topbar prefs
+        var inactive_color = this._prefs.INACTIVE_COLOR.get();
+        var inactive_opacity = this._prefs.INACTIVE_OPACITY.get();
+        this._topbar_prefs["inactive"].update(inactive_color, inactive_opacity);
+
+        this._log("updated color prefs");
     }
 };
 
