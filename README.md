@@ -8,7 +8,7 @@ This extension now supports changing opacity and color of topbar, and will maybe
 - topbar text color
 - topbar text shadow
 
-Originally ased on zhanghai's [work](https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar); by the way, thanks to him!
+Originally based on zhanghai's [work](https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar); by the way, thanks to him!
 
 ## Screenshots
 
