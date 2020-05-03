@@ -1,4 +1,4 @@
-# GNOME Shell Extension - Fully Transparent Top Bar
+# GNOME Shell Extension - Smart transparent topbar
 
 A GNOME Shell extension that brings back the transparent top bar when free-floating in GNOME Shell.
 

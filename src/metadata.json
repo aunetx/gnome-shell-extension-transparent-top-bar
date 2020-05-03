@@ -1,6 +1,6 @@
 {
-  "description": "Makes the top bar totaly transparent when free-floating.\n\nBased on zhanghai's excellent work, but this time with transparency set to 100%.",
-  "name": "Fully Transparent Top Bar",
+  "description": "Makes the top bar totaly transparent when free-floating.",
+  "name": "Smart transparent topbar",
   "shell-version": [
     "3.32",
     "3.34",

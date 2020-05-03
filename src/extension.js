@@ -1,15 +1,19 @@
 const Meta = imports.gi.Meta;
 const St = imports.gi.St;
-
 const Main = imports.ui.main;
 
-var Extension = class Extension {
+const ExtensionUtils = imports.misc.extensionUtils;
+const CurrentExtension = ExtensionUtils.getCurrentExtension();
+const Settings = CurrentExtension.imports.settings;
 
+var Extension = class Extension {
     constructor() {
         this._actorSignalIds = null;
         this._windowSignalIds = null;
+        this._prefs = new Settings.Prefs();
     }
 
+    // Called when extension is enabled
     enable() {
         this._actorSignalIds = new Map();
         this._windowSignalIds = new Map();
@@ -39,6 +43,7 @@ var Extension = class Extension {
         this._updateTransparent();
     }
 
+    // Called when extension is disabled
     disable() {
         for (const actorSignalIds of [this._actorSignalIds, this._windowSignalIds]) {
             for (const [actor, signalIds] of actorSignalIds) {
@@ -52,6 +57,11 @@ var Extension = class Extension {
 
         Main.panel.remove_style_class_name('transparent-top-bar--solid');
         Main.panel.remove_style_class_name('transparent-top-bar--transparent');
+    }
+
+    // Log (to access: `journalctl /usr/bin/gnome-shell`)
+    _log(message) {
+        global.log(`[smart transparent topbar] ${message}`);
     }
 
     _onWindowActorAdded(container, metaWindowActor) {
@@ -70,7 +80,6 @@ var Extension = class Extension {
     }
 
     _updateTransparent() {
-
         if (Main.panel.has_style_pseudo_class('overview') || !Main.sessionMode.hasWindows) {
             this._setTransparent(true);
             return;
@@ -102,17 +111,19 @@ var Extension = class Extension {
         this._setTransparent(!isNearEnough);
     }
 
+    // Called when the topbar needs to update its opacity
     _setTransparent(transparent) {
         if (transparent) {
-            Main.panel.remove_style_class_name('transparent-top-bar--solid');
-            Main.panel.add_style_class_name('transparent-top-bar--transparent');
+            //! topbar has inactive-opacity
+            Main.panel.background_color = this._prefs.INACTIVE_BLENDED.get();
         } else {
-            Main.panel.add_style_class_name('transparent-top-bar--solid');
-            Main.panel.remove_style_class_name('transparent-top-bar--transparent');
+            //! topbar has active-opacity
+            Main.panel.background_color = this._prefs.ACTIVE_BLENDED.get();
         }
     }
 };
 
+// Called on gnome-shell loading, even if extension is deactivated
 function init() {
     return new Extension();
 }
