@@ -15,7 +15,6 @@ function buildPrefsWidget() {
     });
 
     (function () {
-
         // "#rrrrggggbbbb" -> "#rrggbb" to prevent incompatibilies btw Gdk & Clutter string color representations
         function convert_rgb(rrrrggggbbbb) {
             var rrggbb = "#";
@@ -65,7 +64,6 @@ function buildPrefsWidget() {
             var selected_active_color = active_color_button.get_color().to_string();
             if (selected_active_color != current_active_color_string) {
                 current_active_color.set(convert_rgb(selected_active_color));
-                // TODO automatically call `Extension._update_prefs()`
             }
         });
 
@@ -99,7 +97,6 @@ function buildPrefsWidget() {
             var selected_inactive_color = inactive_color_button.get_color().to_string();
             if (selected_inactive_color != current_inactive_color_string) {
                 current_inactive_color.set(convert_rgb(selected_inactive_color));
-                // TODO automatically call `Extension._update_prefs()`
             }
         });
 
@@ -154,7 +151,6 @@ function buildPrefsWidget() {
             var newval = sw.get_value();
             if (newval != current_active_opacity.get()) {
                 current_active_opacity.set(newval);
-                // TODO automatically call `Extension._update_prefs()`
             }
         });
 
@@ -192,7 +188,6 @@ function buildPrefsWidget() {
             var newval = sw.get_value();
             if (newval != current_inactive_opacity.get()) {
                 current_inactive_opacity.set(newval);
-                // TODO automatically call `Extension._update_prefs()`
             }
         });
 
