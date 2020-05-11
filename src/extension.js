@@ -30,10 +30,10 @@ var Extension = class Extension {
         this._actorSignalIds = null;
         this._windowSignalIds = null;
         this._prefs = new Settings.Prefs();
-        this._topbar_prefs = {
-            active: new TopbarColor(),
-            inactive: new TopbarColor()
-        }
+        this._topbar_prefs = [
+            new TopbarColor(), // active
+            new TopbarColor() // inactive
+        ]
         this._test = "TEST"
     }
 
@@ -138,12 +138,13 @@ var Extension = class Extension {
 
     // Called when the topbar needs to update its opacity
     _setTransparent(transparent) {
+
         if (transparent) {
             //! topbar has inactive-color
-            Main.panel.background_color = this._topbar_prefs["inactive"].color;
+            Main.panel.background_color = this._topbar_prefs[1].color;
         } else {
             //! topbar has active-color
-            Main.panel.background_color = this._topbar_prefs["active"].color;
+            Main.panel.background_color = this._topbar_prefs[0].color;
         }
     }
 
@@ -152,12 +153,12 @@ var Extension = class Extension {
         // compute active topbar prefs
         var active_color = this._prefs.ACTIVE_COLOR.get();
         var active_opacity = this._prefs.ACTIVE_OPACITY.get();
-        this._topbar_prefs["active"].update(active_color, active_opacity);
+        this._topbar_prefs[0].update(active_color, active_opacity);
 
         // compute inactive topbar prefs
         var inactive_color = this._prefs.INACTIVE_COLOR.get();
         var inactive_opacity = this._prefs.INACTIVE_OPACITY.get();
-        this._topbar_prefs["inactive"].update(inactive_color, inactive_opacity);
+        this._topbar_prefs[1].update(inactive_color, inactive_opacity);
 
         this._log("updated color prefs");
     }
