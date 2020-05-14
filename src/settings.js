@@ -47,5 +47,41 @@ class Prefs {
             changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
             disconnect: function () { return settings.disconnect.apply(settings, arguments); },
         };
+
+        //! text is default color = whether or not to use default colors
+        this.TEXT_IS_DEFAULT_COLOR = {
+            key: 'text-is-default-color',
+            get: function () { return settings.get_boolean(this.key); },
+            set: function (v) { settings.set_boolean(this.key, v); },
+            changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
+            disconnect: function () { return settings.disconnect.apply(settings, arguments); },
+        };
+
+        //! text active color = text color when topbar touched
+        this.TEXT_ACTIVE_COLOR = {
+            key: 'text-active-color',
+            get: function () { return settings.get_string(this.key); },
+            set: function (v) { settings.set_string(this.key, v); },
+            changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
+            disconnect: function () { return settings.disconnect.apply(settings, arguments); },
+        };
+
+        //! text inactive color = text color when topbar not touched
+        this.TEXT_INACTIVE_COLOR = {
+            key: 'text-inactive-color',
+            get: function () { return settings.get_string(this.key); },
+            set: function (v) { settings.set_string(this.key, v); },
+            changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
+            disconnect: function () { return settings.disconnect.apply(settings, arguments); },
+        };
+
+        //! text inactive color = text color when topbar not touched
+        this.TRANSITION_DURATION = {
+            key: 'transition-duration',
+            get: function () { return settings.get_double(this.key); },
+            set: function (v) { settings.set_double(this.key, v); },
+            changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
+            disconnect: function () { return settings.disconnect.apply(settings, arguments); },
+        };
     }
 };

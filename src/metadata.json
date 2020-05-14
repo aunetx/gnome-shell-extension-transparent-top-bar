@@ -1,5 +1,5 @@
 {
-  "description": "Permits to change topbar opacity and color when free-floating.\n\nIf you have issues or recommandations, you can tell me on github so I can see them!",
+  "description": "Permits to change topbar's look and feel when free-floating.\n\nIf you have issues or recommandations, you can tell me on github so I can see them!",
   "name": "Smart transparent topbar",
   "shell-version": [
     "3.32",

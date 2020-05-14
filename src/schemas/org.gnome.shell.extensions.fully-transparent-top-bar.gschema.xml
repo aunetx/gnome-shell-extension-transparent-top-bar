@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schemalist>
 	<schema id="org.gnome.shell.extensions.fully-transparent-top-bar" path="/org/gnome/shell/extensions/fully-transparent-top-bar/">
+		<!-- BACKGROUND COLORS -->
 		<key type="s" name="background-active-color">
 			<default>"rgba(0,0,0,1.0)"</default>
-			<summary>RGBA color when topbar is touched by a window</summary>
+			<summary>RGBA color of the background when topbar is touched by a window</summary>
 			<description />
 		</key>
 		<key type="s" name="background-inactive-color">
 			<default>"rgba(0,0,0,0.0)"</default>
-			<summary>RGBA color when topbar is not touched by any window</summary>
+			<summary>RGBA color of the background when topbar is not touched by any window</summary>
+			<description />
+		</key>
+		<!-- TEXT DEFAULT COLORS -->
+		<key type="b" name="text-is-default-color">
+			<default>true</default>
+			<summary>Boolean, whether to use default theme's colors for text or not</summary>
+			<description />
+		</key>
+		<!-- TEXT COLORS -->
+		<key type="s" name="text-active-color">
+			<default>"rgba(255,255,255,1.0)"</default>
+			<summary>RGBA color of the text when topbar is not touched by any window</summary>
+			<description />
+		</key>
+		<key type="s" name="text-inactive-color">
+			<default>"rgba(255,255,255,1.0)"</default>
+			<summary>RGBA color of the text when topbar is not touched by any window</summary>
+			<description />
+		</key>
+		<!-- TRANSITION DURATION -->
+		<key type="d" name="transition-duration">
+			<default>0.4</default>
+			<summary>Duration in seconds of states' transition</summary>
 			<description />
 		</key>
 	</schema>

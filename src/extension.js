@@ -3,7 +3,6 @@
 const Meta = imports.gi.Meta;
 const St = imports.gi.St;
 const Main = imports.ui.main;
-const Clutter = imports.gi.Clutter;
 
 const CurrentExtension = imports.misc.extensionUtils.getCurrentExtension();
 const Settings = CurrentExtension.imports.settings;
@@ -43,6 +42,10 @@ var Extension = class Extension {
             global.window_manager.connect('switch-workspace', this._updateTransparent.bind(this))
         ]);
 
+        // disable corners, too hard to theme them
+        Main.panel.get_child_at_index(3).hide();
+        Main.panel.get_child_at_index(4).hide();
+
         this._updateTransparent();
     }
 
@@ -57,6 +60,10 @@ var Extension = class Extension {
         }
         this._actorSignalIds = null;
         this._windowSignalIds = null;
+
+        // enable again corners
+        Main.panel.get_child_at_index(3).show();
+        Main.panel.get_child_at_index(4).show();
     }
 
     _onWindowActorAdded(container, metaWindowActor) {
@@ -107,25 +114,35 @@ var Extension = class Extension {
     }
 
     // Called when the topbar needs to update its opacity
-    _setTransparent(transparent) {
-        var color;
-        if (transparent) {
-            color = this._prefs.BACKGROUND_INACTIVE_COLOR.get();
+    _setTransparent(is_transparent) {
+        var background_color, text_color;
+        if (!is_transparent) {
+            background_color = this._prefs.BACKGROUND_ACTIVE_COLOR.get();
+            text_color = this._prefs.TEXT_ACTIVE_COLOR.get();
         } else {
-            color = this._prefs.BACKGROUND_ACTIVE_COLOR.get();
+            background_color = this._prefs.BACKGROUND_INACTIVE_COLOR.get();
+            text_color = this._prefs.TEXT_INACTIVE_COLOR.get();
         }
+        let transition_duration = this._prefs.TRANSITION_DURATION.get();
 
-        var [result, extracted_color] = Clutter.Color.from_string(color);
+        Main.panel.set_style("background-color:" + background_color + ";transition-duration:" + transition_duration + "s;");
 
-        if (result) {
-            Main.panel.background_color = extracted_color
+        if (!this._prefs.TEXT_IS_DEFAULT_COLOR.get()) {
+            this._setTextStyle("color:" + text_color);
         } else {
-            // restore to known state
-            this._prefs.BACKGROUND_ACTIVE_COLOR.set("rgba(0,0,0,1.0)");
-            this._prefs.BACKGROUND_INACTIVE_COLOR.set("rgba(0,0,0,0.0)");
-            throw new Error(
-                "could not parse background color, restored to defaults"
-            );
+            this._removeTextStyle()
+        }
+    }
+
+    _setTextStyle(style) {
+        for (var i = 0; i <= 3; i++) {
+            Main.panel.get_child_at_index(i).get_children().forEach((child) => { child.get_child_at_index(0).style = style })
+        }
+    }
+
+    _removeTextStyle() {
+        for (var i = 0; i <= 3; i++) {
+            Main.panel.get_child_at_index(i).get_children().forEach((child) => { child.get_child_at_index(0).style = null })
         }
     }
 };
