@@ -76,6 +76,10 @@ const PrefsWidget = new GObject.Class({
         let transition_duration = config.TRANSITION_DURATION;
         builder.get_object("transition_duration_scale").set_value(transition_duration.get());
 
+        // ! transition distance
+        let transition_distance = config.TRANSITION_DISTANCE;
+        builder.get_object("transition_distance_scale").set_value(transition_distance.get());
+
         // ! connect
         let SignalHandler = {
             // ! background colors
@@ -108,6 +112,12 @@ const PrefsWidget = new GObject.Class({
             transition_duration_changed(w) {
                 let value = w.get_value();
                 transition_duration.set(value);
+            },
+
+            // ! transition distance
+            transition_distance_changed(w) {
+                let value = w.get_value();
+                transition_distance.set(value);
             }
         };
 

@@ -35,5 +35,11 @@
 			<summary>Duration in seconds of states' transition</summary>
 			<description />
 		</key>
+		<!-- TRANSITION DISTANCE -->
+		<key type="i" name="transition-distance">
+			<default>5</default>
+			<summary>Distance in pixels to trigger a state change</summary>
+			<description />
+		</key>
 	</schema>
 </schemalist>

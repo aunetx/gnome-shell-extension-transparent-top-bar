@@ -1,10 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.2 -->
 <interface>
-  <requires lib="gtk+" version="3.20" />
-  <object class="GtkToggleAction" id="toggleaction1" />
-  <object class="GtkAdjustment" id="transition_duration_adjustement">
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="transition_distance_adjustment">
+    <property name="lower">-1</property>
+    <property name="upper">15</property>
+    <property name="value">5</property>
+    <property name="step_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="transition_duration_adjustment">
     <property name="upper">1.5</property>
+    <property name="value">0.40000000000000002</property>
   </object>
   <object class="GtkNotebook" id="main_frame">
     <property name="visible">True</property>
@@ -63,7 +69,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(0,0,0)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="background_active_color_changed" swapped="no" />
+                    <signal name="color-set" handler="background_active_color_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -78,7 +84,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgba(0,0,0,0)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="background_inactive_color_changed" swapped="no" />
+                    <signal name="color-set" handler="background_inactive_color_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -171,7 +177,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(255,255,255)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="text_active_color_changed" swapped="no" />
+                    <signal name="color-set" handler="text_active_color_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -186,7 +192,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(255,255,255)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="text_inactive_color_changed" swapped="no" />
+                    <signal name="color-set" handler="text_inactive_color_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -211,7 +217,7 @@
                     <property name="halign">start</property>
                     <property name="valign">start</property>
                     <property name="active">True</property>
-                    <signal name="state-set" handler="text_default_color_changed" swapped="no" />
+                    <signal name="state-set" handler="text_default_color_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -234,120 +240,6 @@
             <property name="expand">False</property>
             <property name="fill">False</property>
             <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFrame" id="text_shadow_frame">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label_xalign">0.5</property>
-            <property name="shadow_type">in</property>
-            <child>
-              <object class="GtkGrid" id="text_shadow_grid">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="border_width">5</property>
-                <property name="row_spacing">5</property>
-                <property name="row_homogeneous">True</property>
-                <property name="column_homogeneous">True</property>
-                <child>
-                  <object class="GtkLabel" id="text_shadow_use_label">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Use text shadows:</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox" id="active_text_shadow_frame">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="spacing">5</property>
-                    <child>
-                      <object class="GtkSwitch" id="active_text_shadow_switch">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <signal name="state-set" handler="text_active_shadow_changed" swapped="no" />
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="active_text_shadow_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">when topbar is touched</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox" id="inactive_text_shadow_frame">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="spacing">5</property>
-                    <child>
-                      <object class="GtkSwitch" id="inactive_text_shadow_switch">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <signal name="state-set" handler="text_inactive_shadow_changed" swapped="no" />
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="inactive_text_shadow_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">when topbar is not touched</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-            <child type="label">
-              <object class="GtkLabel" id="text_shadow_label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">5</property>
-                <property name="margin_right">5</property>
-                <property name="label" translatable="yes">Text shadow</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">1</property>
           </packing>
         </child>
       </object>
@@ -390,7 +282,7 @@
                 <property name="row_homogeneous">True</property>
                 <property name="column_homogeneous">True</property>
                 <child>
-                  <object class="GtkLabel" id="active_transition_label">
+                  <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Time in seconds of the transition</property>
@@ -404,13 +296,13 @@
                   <object class="GtkScale" id="transition_duration_scale">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="adjustment">transition_duration_adjustement</property>
+                    <property name="adjustment">transition_duration_adjustment</property>
                     <property name="restrict_to_fill_level">False</property>
                     <property name="fill_level">0</property>
                     <property name="round_digits">2</property>
                     <property name="digits">2</property>
                     <property name="value_pos">right</property>
-                    <signal name="value-changed" handler="transition_duration_changed" swapped="no" />
+                    <signal name="value-changed" handler="transition_duration_changed" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -433,6 +325,66 @@
             <property name="expand">False</property>
             <property name="fill">False</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="transition_distance_frame">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label_xalign">0.5</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkGrid" id="transition_distance_grid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">5</property>
+                <property name="row_spacing">5</property>
+                <property name="column_spacing">5</property>
+                <property name="row_homogeneous">True</property>
+                <property name="column_homogeneous">True</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Distance of the window in pixel to trigger a state change</property>
+                    <property name="wrap">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScale" id="transition_distance_scale">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="adjustment">transition_distance_adjustment</property>
+                    <property name="restrict_to_fill_level">False</property>
+                    <property name="fill_level">0</property>
+                    <property name="round_digits">0</property>
+                    <property name="digits">0</property>
+                    <property name="value_pos">right</property>
+                    <signal name="value-changed" handler="transition_distance_changed" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="transition_distance_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Transition duration</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>

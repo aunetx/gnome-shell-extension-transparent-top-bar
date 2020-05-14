@@ -75,11 +75,20 @@ class Prefs {
             disconnect: function () { return settings.disconnect.apply(settings, arguments); },
         };
 
-        //! text inactive color = text color when topbar not touched
+        //! transition duration = time in second of state transition
         this.TRANSITION_DURATION = {
             key: 'transition-duration',
             get: function () { return settings.get_double(this.key); },
             set: function (v) { settings.set_double(this.key, v); },
+            changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
+            disconnect: function () { return settings.disconnect.apply(settings, arguments); },
+        };
+
+        //! transition distance = distance in pixels to trigger state change
+        this.TRANSITION_DISTANCE = {
+            key: 'transition-distance',
+            get: function () { return settings.get_int(this.key); },
+            set: function (v) { settings.set_int(this.key, v); },
             changed: function (cb) { return settings.connect('changed::' + this.key, cb); },
             disconnect: function () { return settings.disconnect.apply(settings, arguments); },
         };

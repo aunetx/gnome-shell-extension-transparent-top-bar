@@ -1,14 +1,19 @@
 # GNOME Shell Extension - Smart transparent topbar
 
-A GNOME Shell extension that brings back the transparent top bar when free-floating in GNOME Shell.
+A GNOME Shell extension that allows customizing the topbar when free-floating.
 
-This extension now supports changing opacity and color of topbar, and will maybe support soon changing at least:
+This extension now supports changing:
 
-- colors transition duration
-- topbar text color
-- topbar text shadow
+- topbar background color / opacity
+- topbar text color / opacity
+- transition duration
+- transition distance
+
+Between free-floating and non free-floating states :)
 
 Originally based on zhanghai's [work](https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar); by the way, thanks to him!
+
+*Note: this extension may contain some bugs, if you find one, please report it!*
 
 ## Screenshots
 

@@ -107,7 +107,8 @@ var Extension = class Extension {
         const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor;
         const isNearEnough = windows.some(metaWindow => {
             const verticalPosition = metaWindow.get_frame_rect().y;
-            return verticalPosition < panelBottom + 5 * scale;
+            let distance = this._prefs.TRANSITION_DISTANCE.get();
+            return verticalPosition < panelBottom + distance * scale;
         });
 
         this._setTransparent(!isNearEnough);
