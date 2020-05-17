@@ -61,6 +61,9 @@ var Extension = class Extension {
         this._actorSignalIds = null;
         this._windowSignalIds = null;
 
+        // reset transparency
+        this._resetTransparent();
+
         // enable again corners
         Main.panel.get_child_at_index(3).show();
         Main.panel.get_child_at_index(4).show();
@@ -133,6 +136,12 @@ var Extension = class Extension {
         } else {
             this._removeTextStyle()
         }
+    }
+
+    // Called when extension is disabled
+    _resetTransparent() {
+        Main.panel.set_style(null);
+        this._removeTextStyle();
     }
 
     _setTextStyle(style) {
