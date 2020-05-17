@@ -404,5 +404,21 @@
         <property name="tab_fill">False</property>
       </packing>
     </child>
+    <child type="action-end">
+      <object class="GtkButton" id="reset_button">
+        <property name="label" translatable="yes">Reset all</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="margin_left">3</property>
+        <property name="margin_right">2</property>
+        <property name="margin_top">2</property>
+        <property name="margin_bottom">3</property>
+        <signal name="clicked" handler="reset_all" swapped="no"/>
+      </object>
+      <packing>
+        <property name="tab_fill">False</property>
+      </packing>
+    </child>
   </object>
 </interface>

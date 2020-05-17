@@ -39,6 +39,8 @@ const PrefsWidget = new GObject.Class({
         } else {
             // restore to a known state
             background_active_color.set("rgba(0,0,0,1.0)");
+            parsed_color.parse("rgba(0,0,0,1.0)");
+            builder.get_object("active_background_color_chooser").set_rgba(parsed_color);
         }
 
         // ! background inactive color
@@ -48,6 +50,8 @@ const PrefsWidget = new GObject.Class({
         } else {
             // restore to a known state
             background_inactive_color.set("rgba(0,0,0,0.0)");
+            parsed_color.parse("rgba(0,0,0,0.0)");
+            builder.get_object("inactive_background_color_chooser").set_rgba(parsed_color);
         }
 
         // ! text default color
@@ -61,6 +65,8 @@ const PrefsWidget = new GObject.Class({
         } else {
             // restore to a known state
             text_active_color.set("rgba(255,255,255,1.0)");
+            parsed_color.parse("rgba(255,255,255,1.0)");
+            builder.get_object("active_text_color_chooser").set_rgba(parsed_color);
         }
 
         // ! text inactive color
@@ -70,6 +76,8 @@ const PrefsWidget = new GObject.Class({
         } else {
             // restore to a known state
             text_inactive_color.set("rgba(255,255,255,1.0)");
+            parsed_color.parse("rgba(255,255,255,1.0)");
+            builder.get_object("inactive_text_color_chooser").set_rgba(parsed_color);
         }
 
         // ! transition duration
@@ -118,6 +126,43 @@ const PrefsWidget = new GObject.Class({
             transition_distance_changed(w) {
                 let value = w.get_value();
                 transition_distance.set(value);
+            },
+
+            // ! reset preferences
+            reset_all() {
+                // ! background active color
+                background_active_color.set("rgba(0,0,0,1.0)");
+                parsed_color.parse("rgba(0,0,0,1.0)");
+                builder.get_object("active_background_color_chooser").set_rgba(parsed_color);
+
+                // ! background inactive color
+                background_inactive_color.set("rgba(0,0,0,0.0)");
+                parsed_color.parse("rgba(0,0,0,0.0)");
+                builder.get_object("inactive_background_color_chooser").set_rgba(parsed_color);
+
+                // ! text default color
+                text_default_color_state.set(true);
+                builder.get_object("default_text_color_switch").set_state(true);
+
+                // ! text active color
+                text_active_color.set("rgba(255,255,255,1.0)");
+                parsed_color.parse("rgba(255,255,255,1.0)");
+                builder.get_object("active_text_color_chooser").set_rgba(parsed_color);
+
+                // ! text inactive color
+                text_inactive_color.set("rgba(255,255,255,1.0)");
+                parsed_color.parse("rgba(255,255,255,1.0)");
+                builder.get_object("inactive_text_color_chooser").set_rgba(parsed_color);
+
+                // ! transition duration
+                transition_duration.set(0.4)
+                builder.get_object("transition_duration_scale").set_value(0.4);
+
+                // ! transition distance
+                transition_distance.set(5)
+                builder.get_object("transition_distance_scale").set_value(5);
+
+                log("[smart transparent top bar] preferences reset");
             }
         };
 
