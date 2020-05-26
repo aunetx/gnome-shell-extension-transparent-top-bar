@@ -132,9 +132,11 @@ var Extension = class Extension {
         Main.panel.set_style("background-color:" + background_color + ";transition-duration:" + transition_duration + "s;");
 
         if (!this._prefs.TEXT_IS_DEFAULT_COLOR.get()) {
+            // TODO add transition-duration for text color
+            // TODO style tray icons too
             this._setTextStyle("color:" + text_color);
         } else {
-            this._removeTextStyle()
+            this._removeTextStyle();
         }
     }
 
@@ -145,15 +147,31 @@ var Extension = class Extension {
     }
 
     _setTextStyle(style) {
-        for (var i = 0; i <= 3; i++) {
-            Main.panel.get_child_at_index(i).get_children().forEach((child) => { child.get_child_at_index(0).style = style })
-        }
+        Main.panel.get_children().forEach((panelPart) => {
+            switch (panelPart.get_name()) {
+                case "panelLeft":
+                case "panelCenter":
+                case "panelRight":
+                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).style = style })
+                    break;
+                default:
+                    break;
+            }
+        })
     }
 
     _removeTextStyle() {
-        for (var i = 0; i <= 3; i++) {
-            Main.panel.get_child_at_index(i).get_children().forEach((child) => { child.get_child_at_index(0).style = null })
-        }
+        Main.panel.get_children().forEach((panelPart) => {
+            switch (panelPart) {
+                case "panelLeft":
+                case "panelCenter":
+                case "panelRight":
+                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).style = null })
+                    break;
+                default:
+                    break;
+            }
+        })
     }
 };
 
