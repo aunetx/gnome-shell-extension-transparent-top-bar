@@ -43,8 +43,11 @@ var Extension = class Extension {
         ]);
 
         // disable corners, too hard to theme them
-        Main.panel.get_child_at_index(3).hide();
-        Main.panel.get_child_at_index(4).hide();
+        Main.panel.get_children().forEach((panelPart) => {
+            if (panelPart instanceof imports.ui.panel.PanelCorner) {
+                panelPart.hide();
+            }
+        })
 
         this._updateTransparent();
     }
@@ -65,8 +68,11 @@ var Extension = class Extension {
         this._resetTransparent();
 
         // enable again corners
-        Main.panel.get_child_at_index(3).show();
-        Main.panel.get_child_at_index(4).show();
+        Main.panel.get_children().forEach((panelPart) => {
+            if (panelPart instanceof imports.ui.panel.PanelCorner) {
+                panelPart.show();
+            }
+        })
     }
 
     _onWindowActorAdded(container, metaWindowActor) {
@@ -131,6 +137,7 @@ var Extension = class Extension {
 
         Main.panel.set_style("background-color:" + background_color + ";transition-duration:" + transition_duration + "s;");
 
+        // TODO improve performances by checking if already set to "null" (needs A LOT of testing)
         if (!this._prefs.TEXT_IS_DEFAULT_COLOR.get()) {
             // TODO add transition-duration for text color
             // TODO style tray icons too
@@ -152,7 +159,7 @@ var Extension = class Extension {
                 case "panelLeft":
                 case "panelCenter":
                 case "panelRight":
-                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).style = style })
+                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(style) })
                     break;
                 default:
                     break;
@@ -162,11 +169,11 @@ var Extension = class Extension {
 
     _removeTextStyle() {
         Main.panel.get_children().forEach((panelPart) => {
-            switch (panelPart) {
+            switch (panelPart.get_name()) {
                 case "panelLeft":
                 case "panelCenter":
                 case "panelRight":
-                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).style = null })
+                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(null) })
                     break;
                 default:
                     break;
