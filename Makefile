@@ -5,6 +5,7 @@ build:
 	glib-compile-schemas src/schemas
 	mkdir -p build/
 	cp -r src/* build/
+	rm -f build/prefs.ui~
 
 
 build_pkg: build
