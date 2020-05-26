@@ -17,8 +17,6 @@ Originally based on zhanghai's [work](https://github.com/zhanghai/gnome-shell-ex
 
 ## Screenshots
 
-![screenshot](screenshot.png)
-
 With a non-maximized window:
 
 ![screenshot free-floating](screenshot_free-floating.png)
@@ -27,9 +25,23 @@ With a maximized one:
 
 ![screenshot fullscreen](screenshot_fullscreen.png)
 
-## Versions
+## Advanced
 
-Supported GNOME Shell versions:
+### Install from source
+
+To install the latest version (though maybe unstable), use the makefile:
+
+```sh
+git clone https://github.com/aunetx/smart-transparent-top-bar
+cd smart-transparent-top-bar
+make install
+```
+
+And restart GNOME Shell if needed.
+
+### Versions support
+
+The current extension supports those GNOME Shell versions:
 
 - 3.32
 - 3.34
