@@ -7,6 +7,8 @@ const Main = imports.ui.main;
 const CurrentExtension = imports.misc.extensionUtils.getCurrentExtension();
 const Settings = CurrentExtension.imports.settings;
 
+const StBoxLayout = imports.gi.St.BoxLayout;
+const PanelCorner = imports.ui.panel.PanelCorner;
 
 var Extension = class Extension {
     constructor() {
@@ -44,7 +46,7 @@ var Extension = class Extension {
 
         // disable corners, too hard to theme them
         Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof imports.ui.panel.PanelCorner) {
+            if (panelPart instanceof PanelCorner) {
                 panelPart.hide();
             }
         })
@@ -69,7 +71,7 @@ var Extension = class Extension {
 
         // enable again corners
         Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof imports.ui.panel.PanelCorner) {
+            if (panelPart instanceof PanelCorner) {
                 panelPart.show();
             }
         })
@@ -155,28 +157,16 @@ var Extension = class Extension {
 
     _setTextStyle(style) {
         Main.panel.get_children().forEach((panelPart) => {
-            switch (panelPart.get_name()) {
-                case "panelLeft":
-                case "panelCenter":
-                case "panelRight":
-                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(style) })
-                    break;
-                default:
-                    break;
+            if (panelPart instanceof StBoxLayout) {
+                panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(style) })
             }
         })
     }
 
     _removeTextStyle() {
         Main.panel.get_children().forEach((panelPart) => {
-            switch (panelPart.get_name()) {
-                case "panelLeft":
-                case "panelCenter":
-                case "panelRight":
-                    panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(null) })
-                    break;
-                default:
-                    break;
+            if (panelPart instanceof StBoxLayout) {
+                panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(null) })
             }
         })
     }
