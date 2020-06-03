@@ -13,6 +13,8 @@ Between free-floating and non free-floating states :)
 
 Originally based on zhanghai's [work](https://github.com/zhanghai/gnome-shell-extension-transparent-top-bar); by the way, thanks to him!
 
+[<img src="https://github.com/aunetx/files_utils/raw/master/get_it_on_gnome_extensions.png" height="100">](https://extensions.gnome.org/extension/2588/fully-transparent-top-bar/)
+
 *Note: this extension may contain some bugs, if you find one, please report it!*
 
 ## Screenshots
