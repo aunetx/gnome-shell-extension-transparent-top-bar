@@ -45,11 +45,8 @@ var Extension = class Extension {
         ]);
 
         // disable corners, too hard to theme them
-        Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof PanelCorner) {
-                panelPart.hide();
-            }
-        })
+        Main.panel._leftCorner.hide();
+        Main.panel._rightCorner.hide();
 
         this._updateTransparent();
     }
@@ -70,11 +67,8 @@ var Extension = class Extension {
         this._resetTransparent();
 
         // enable again corners
-        Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof PanelCorner) {
-                panelPart.show();
-            }
-        })
+        Main.panel._leftCorner.show();
+        Main.panel._rightCorner.show();
     }
 
     _onWindowActorAdded(container, metaWindowActor) {
@@ -139,36 +133,32 @@ var Extension = class Extension {
 
         Main.panel.set_style("background-color:" + background_color + ";transition-duration:" + transition_duration + "s;");
 
-        // TODO improve performances by checking if already set to "null" (needs A LOT of testing)
         if (!this._prefs.TEXT_IS_DEFAULT_COLOR.get()) {
             // TODO add transition-duration for text color
             // TODO style tray icons too
             this._setTextStyle("color:" + text_color);
         } else {
-            this._removeTextStyle();
+            this._setTextStyle(null);
         }
     }
 
     // Called when extension is disabled
     _resetTransparent() {
         Main.panel.set_style(null);
-        this._removeTextStyle();
+        this._setTextStyle(null);
+    }
+
+    _try_set_style(ch, st) {
+        let res = ch.get_child_at_index(0);
+        if (res) {
+            res.set_style(st);
+        }
     }
 
     _setTextStyle(style) {
-        Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof StBoxLayout) {
-                panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(style) })
-            }
-        })
-    }
-
-    _removeTextStyle() {
-        Main.panel.get_children().forEach((panelPart) => {
-            if (panelPart instanceof StBoxLayout) {
-                panelPart.get_children().forEach((child) => { child.get_child_at_index(0).set_style(null) })
-            }
-        })
+        Main.panel._leftBox.get_children().forEach((child) => { this._try_set_style(child, style) });
+        Main.panel._centerBox.get_children().forEach((child) => { this._try_set_style(child, style) });
+        Main.panel._rightBox.get_children().forEach((child) => { this._try_set_style(child, style) });
     }
 };
 

@@ -14,9 +14,9 @@ build_pkg: build
 
 
 vm_test: build
-	rm -rf $(HOME)/Documents/shared/fully-transparent-top-bar@aunetx
-	mkdir -p $(HOME)/Documents/shared/fully-transparent-top-bar@aunetx
-	cp -r build/* $(HOME)/Documents/shared/fully-transparent-top-bar@aunetx/
+	rm -rf $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx
+	mkdir -p $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx
+	cp -r build/* $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx/
 
 
 install: build
