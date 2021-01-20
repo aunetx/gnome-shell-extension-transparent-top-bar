@@ -73,7 +73,7 @@ var Extension = class Extension {
 
     _onWindowActorAdded(container, metaWindowActor) {
         this._windowSignalIds.set(metaWindowActor, [
-            metaWindowActor.connect('allocation-changed', this._updateTransparent.bind(this)),
+            metaWindowActor.connect('notify::allocation', this._updateTransparent.bind(this)),
             metaWindowActor.connect('notify::visible', this._updateTransparent.bind(this))
         ]);
     }
@@ -100,10 +100,10 @@ var Extension = class Extension {
         const workspaceManager = global.workspace_manager;
         const activeWorkspace = workspaceManager.get_active_workspace();
         const windows = activeWorkspace.list_windows().filter(metaWindow => {
-            return metaWindow.is_on_primary_monitor()
-                && metaWindow.showing_on_its_workspace()
-                && !metaWindow.is_hidden()
-                && metaWindow.get_window_type() !== Meta.WindowType.DESKTOP;
+            return metaWindow.is_on_primary_monitor() &&
+                metaWindow.showing_on_its_workspace() &&
+                !metaWindow.is_hidden() &&
+                metaWindow.get_window_type() !== Meta.WindowType.DESKTOP;
         });
 
         // Check if at least one window is near enough to the panel.
@@ -156,9 +156,15 @@ var Extension = class Extension {
     }
 
     _setTextStyle(style) {
-        Main.panel._leftBox.get_children().forEach((child) => { this._try_set_style(child, style) });
-        Main.panel._centerBox.get_children().forEach((child) => { this._try_set_style(child, style) });
-        Main.panel._rightBox.get_children().forEach((child) => { this._try_set_style(child, style) });
+        Main.panel._leftBox.get_children().forEach((child) => {
+            this._try_set_style(child, style)
+        });
+        Main.panel._centerBox.get_children().forEach((child) => {
+            this._try_set_style(child, style)
+        });
+        Main.panel._rightBox.get_children().forEach((child) => {
+            this._try_set_style(child, style)
+        });
     }
 };
 

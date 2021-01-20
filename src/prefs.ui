@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.2 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.20" />
   <object class="GtkAdjustment" id="transition_distance_adjustment">
     <property name="lower">-1</property>
     <property name="upper">15</property>
@@ -69,7 +69,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(0,0,0)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="background_active_color_changed" swapped="no"/>
+                    <signal name="color-set" handler="background_active_color_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -84,7 +84,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgba(0,0,0,0)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="background_inactive_color_changed" swapped="no"/>
+                    <signal name="color-set" handler="background_inactive_color_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -177,7 +177,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(255,255,255)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="text_active_color_changed" swapped="no"/>
+                    <signal name="color-set" handler="text_active_color_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -192,7 +192,7 @@
                     <property name="use_alpha">True</property>
                     <property name="rgba">rgb(255,255,255)</property>
                     <property name="show_editor">True</property>
-                    <signal name="color-set" handler="text_inactive_color_changed" swapped="no"/>
+                    <signal name="color-set" handler="text_inactive_color_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -217,7 +217,7 @@
                     <property name="halign">start</property>
                     <property name="valign">start</property>
                     <property name="active">True</property>
-                    <signal name="state-set" handler="text_default_color_changed" swapped="no"/>
+                    <signal name="state-set" handler="text_default_color_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -302,7 +302,7 @@
                     <property name="round_digits">2</property>
                     <property name="digits">2</property>
                     <property name="value_pos">right</property>
-                    <signal name="value-changed" handler="transition_duration_changed" swapped="no"/>
+                    <signal name="value-changed" handler="transition_duration_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -364,7 +364,7 @@
                     <property name="round_digits">0</property>
                     <property name="digits">0</property>
                     <property name="value_pos">right</property>
-                    <signal name="value-changed" handler="transition_distance_changed" swapped="no"/>
+                    <signal name="value-changed" handler="transition_distance_changed" swapped="no" />
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -414,7 +414,7 @@
         <property name="margin_right">2</property>
         <property name="margin_top">2</property>
         <property name="margin_bottom">3</property>
-        <signal name="clicked" handler="reset_all" swapped="no"/>
+        <signal name="clicked" handler="reset_all" swapped="no" />
       </object>
       <packing>
         <property name="tab_fill">False</property>
