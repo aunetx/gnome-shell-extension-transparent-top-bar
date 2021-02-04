@@ -45,9 +45,10 @@ And restart GNOME Shell if needed.
 
 The current extension supports those GNOME Shell versions:
 
-- 3.32
-- 3.34
-- 3.36
+- 3.32 (in previous release)
+- 3.34 (in previous release)
+- 3.36 (in previous release)
+- 3.38
 
 ## License
 
