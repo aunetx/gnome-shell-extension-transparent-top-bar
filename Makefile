@@ -1,3 +1,5 @@
+SHARED_VM = $(HOME)/Projets/.shared/
+
 .PHONY: build_pkg build vm_test install remove clean
 
 
@@ -14,10 +16,10 @@ build_pkg: build
 
 
 vm_test: build
-	rm -rf $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx
-	mkdir -p $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx
-	cp -r build/* $(HOME)/Documents/shared/smart_topbar/fully-transparent-top-bar@aunetx/
-
+	rm -rf $(SHARED_VM)/smart_topbar/fully-transparent-top-bar@aunetx
+	mkdir -p $(SHARED_VM)/smart_topbar/fully-transparent-top-bar@aunetx
+	cp -r build/* $(SHARED_VM)/smart_topbar/fully-transparent-top-bar@aunetx/
+ 
 
 install: build
 	rm -rf $(HOME)/.local/share/gnome-shell/extensions/fully-transparent-top-bar@aunetx
